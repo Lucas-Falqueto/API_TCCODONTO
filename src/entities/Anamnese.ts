@@ -12,6 +12,7 @@ export class Anamnese {
     @Column({type: "jsonb"})
     questions:string;
 
+    //FK
     @OneToOne(() => Student, (student)=>student.id)
     @JoinColumn()
     student: Student
