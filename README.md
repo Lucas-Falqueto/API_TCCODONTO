@@ -7,8 +7,7 @@ Steps to run this project:
 3. Run `npm start` command
 
 # Criando uma API com TypeScript
-Aprendo a implementar TS, docker, typeorm, postgres em uma api que terá como objetivo de gerenciar um sistema de 
-controle financeiro proprio.
+A api que terá como objetivo de gerenciar um sistema onde o dentista podera guarda a ficha dos alunos (Anamnese, diaginostico).
 
 ### Erro
 Caso ocorra algum erro ao executar o docker compose experimente ir na pasta `usuario/.docker/contexts/meta/(some sha256)/` e apagar o arquivo `meta.json` reinicie o docker e execute o `docker-compose up -d`
