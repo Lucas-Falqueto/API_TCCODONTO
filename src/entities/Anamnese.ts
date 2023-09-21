@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn, OneToOne } from "typeorm"
 import { Student } from "./Student"
-
 @Entity()
 export class Anamnese {
     
@@ -10,14 +9,8 @@ export class Anamnese {
     @Column()
     mainComplaint: string
 
-    @Column()
-    question: string
-
-    @Column()
-    response: string
-
-    @Column({nullable: true})
-    justification: string
+    @Column({type: "jsonb"})
+    questions:string;
 
     @OneToOne(() => Student, (student)=>student.id)
     @JoinColumn()

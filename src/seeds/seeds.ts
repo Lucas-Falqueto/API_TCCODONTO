@@ -70,11 +70,22 @@ const createAnamnese = async () =>{
 
   const newAnamnese = new Anamnese();
   newAnamnese.mainComplaint = "Dor de Cabeça";
-  newAnamnese.question = "Pergunta sobre anamnese";
-  newAnamnese.response = "Resposta da anamnese";
-  newAnamnese.justification = "Justificativa para a resposta";
+  newAnamnese.questions = JSON.stringify([
+    {
+      question: '01- Está em tratamento médico?',
+      options: ['Sim – Qual motivo?', 'Não'],
+      response: 'nao',
+      justification: "não"
+    },
+    {
+      question: '02- Está usando medicamento?',
+      options: ['Sim – Qual/dosagem?', 'Não'],
+      response: 'nao',
+      justification: "não"
+    },
+  ]);
   newAnamnese.student = existingStudent;
-
+// console.log(newAnamnese.questions)
   await anamneseRepository.save(newAnamnese);
 
 }
