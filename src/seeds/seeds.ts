@@ -59,17 +59,21 @@ const createAnamnese = async () =>{
   const existingStudent = await studentRepository.findOneBy({
     id: 1,
   })
-
+  const firstAnamnese = await anamneseRepository.findOneBy({
+    student: existingStudent
+  })
+  if(firstAnamnese) return
   if (!existingStudent) {
     console.error("Estudante não encontrado.");
     return;
   }
 
   const newAnamnese = new Anamnese();
+  newAnamnese.mainComplaint = "Dor de Cabeça";
   newAnamnese.question = "Pergunta sobre anamnese";
   newAnamnese.response = "Resposta da anamnese";
   newAnamnese.justification = "Justificativa para a resposta";
-  newAnamnese.studentID = existingStudent;
+  newAnamnese.student = existingStudent;
 
   await anamneseRepository.save(newAnamnese);
 
@@ -77,7 +81,9 @@ const createAnamnese = async () =>{
 
 export const startSeeds = () =>{
   createDentist()
-  createStudent()
-  createDiagnosis()
-  createAnamnese()
+  createStudent().then(()=>{
+    createDiagnosis()
+    createAnamnese()
+  })
+  
 }

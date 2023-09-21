@@ -6,7 +6,10 @@ export class Anamnese {
     
     @PrimaryGeneratedColumn()
     id: number
-    
+
+    @Column()
+    mainComplaint: string
+
     @Column()
     question: string
 
@@ -18,5 +21,5 @@ export class Anamnese {
 
     @OneToOne(() => Student, (student)=>student.id)
     @JoinColumn()
-    studentID: Student
+    student: Student
 }
