@@ -1,25 +1,36 @@
+import AppDataSource from "../data-source";
+import { Dentist } from "../entities/Dentist";
+import * as bcrypt from "bcrypt";
 
-// import { User } from "../entity/Person";
-// import { AppDataSource } from "./../data-source"
+export class UserController {
+  async save(user) {
+    const userTable = AppDataSource.getRepository(Dentist);
+    const newUser: Dentist = user;
+    return await userTable.save(newUser);
+  }
 
-// export class UserController {
-//     async save(user: User) {
-//         const userTable = AppDataSource.getRepository(User)
-//         return await userTable.save(user)
-//     }
+  // async getUsers() {
+  //     const users = AppDataSource.manager.find(User)
+  //     return users
+  // }
 
-//     // async getUsers() {
-//     //     const users = AppDataSource.manager.find(User)
-//     //     return users
-//     // }
+  async getUserEmail(email) {
+    const user = await AppDataSource.manager.findOneBy(Dentist, {
+      email: email,
+    });
+    return user;
+  }
 
-//     async getUserId(id: number) {
-//         const user = await AppDataSource.manager.findOneBy(User, { id: id });
-//         return user
-//     }
+  async getUser(email) {
+    const user = await AppDataSource.manager.findOneBy(Dentist, {
+      email: email,
+    });
 
-//     // async listReleaseUser(id: number) {
-//     //     const user = await AppDataSource.manager.findOne(User, { where: { id: id }, relations: ['release'] })
-//     //     return user.release;
-//     // }
-// }
+    return user;
+  }
+
+  // async listReleaseUser(id: number) {
+  //     const user = await AppDataSource.manager.findOne(User, { where: { id: id }, relations: ['release'] })
+  //     return user.release;
+  // }
+}
