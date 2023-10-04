@@ -12,7 +12,7 @@ const userCtrl = new UserController();
 //Salvar novo Usuario
 routerUser.post("/register", async (req, res) => {
   const { siape, email, name, crm, password } = req.body;
-  console.log(siape, email, name, crm, password);
+  // console.log(siape, email, name, crm, password);
   if (
     siape === "" ||
     email === "" ||
@@ -25,7 +25,7 @@ routerUser.post("/register", async (req, res) => {
       .json({ error: "Insira todos os campos corretamente" });
   }
   const userEmail = await userCtrl.getUserEmail(email);
-  console.log(userEmail);
+  // console.log(userEmail);
   if (userEmail) return res.status(404).json({ error: "Email ja existe" });
 
   const user = new Dentist();
@@ -47,7 +47,7 @@ routerUser.post("/register", async (req, res) => {
 });
 
 //login
-routerUser.get("/auth/login", async (req, res) => {
+routerUser.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
 
   if (email === "" || password === "") {
