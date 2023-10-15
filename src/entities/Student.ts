@@ -33,6 +33,13 @@ export class Student {
   @OneToMany(() => Diagnosis, (diagnosis) => diagnosis.id)
   diagnosis: Diagnosis[];
 
+  // constructor(name, phone, gender, birthDate, enrollment) {
+  //   this.birthDate = birthDate;
+  //   this.name = name;
+  //   this.phone = phone;
+  //   this.gender = gender;
+  //   this.enrollment = enrollment;
+  // }
   // @OneToOne(() => Anamnese, (anamnese)=>anamnese.id)
   // @JoinColumn()
   // anamneseID: Anamnese

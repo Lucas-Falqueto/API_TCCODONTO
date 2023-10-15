@@ -22,4 +22,34 @@ export default class StudentController {
 
     return student;
   }
+  async getStudentId(id) {
+    const student = await AppDataSource.manager.findOneBy(Student, {
+      id: id,
+    });
+
+    return student;
+  }
+  async getStudents() {
+    const student = await AppDataSource.getRepository(Student)
+      .createQueryBuilder("student")
+      .getMany();
+
+    return student;
+  }
+
+  async putStudent(id, student: Student) {
+    const newStudent = await AppDataSource.createQueryBuilder()
+      .update(Student)
+      .set({
+        name: student.name,
+        birthDate: student.birthDate,
+        enrollment: student.enrollment,
+        phone: student.phone,
+        gender: student.gender,
+      })
+      .where("id = :id", { id: id })
+      .execute();
+
+    return newStudent;
+  }
 }

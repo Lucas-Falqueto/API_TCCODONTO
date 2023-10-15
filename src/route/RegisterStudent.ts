@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { Student } from "../entities/Student";
 import StudentController from "../controller/StudentController";
-export const routerStudent = Router();
-routerStudent.post("/", async (req, res) => {
+export const routerRegisterStudent = Router();
+routerRegisterStudent.post("/", async (req, res) => {
   const { name, phone, gender, birthDate, enrollment } = req.body;
   const studentController = new StudentController();
   if (name === "" || enrollment === "") {

@@ -8,7 +8,8 @@ import { routerUser } from "./route/user";
 // import { routerRelease } from './route/release'
 import * as dotenv from "dotenv";
 import { validate } from "./route/auth";
-import { routerStudent } from "./route/student";
+import { routerRegisterStudent } from "./route/RegisterStudent";
+import { routerStudent } from "./route/students";
 dotenv.config();
 //Criando aplicação
 export const app = express();
@@ -27,7 +28,8 @@ createConnectionDB();
 
 //Config rotas
 app.use("/user", routerUser);
-app.use("/registerStudent", routerStudent);
+app.use("/registerStudent", routerRegisterStudent);
+app.use("/students", routerStudent);
 app.use(validate);
 // app.use('/', (req, res) => res.send('Api TS'))
 
